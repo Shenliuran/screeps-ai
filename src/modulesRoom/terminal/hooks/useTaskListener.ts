@@ -88,7 +88,7 @@ export const useTaskListener = function (context: TerminalContext, db: TerminalM
         const { market } = env.getGame()
 
         // 订单合适，写入缓存并要路费
-        memory.orderId = targetOrder.id as Id<Order>
+        memory.orderId = targetOrder.id as string
 
         // 想要卖出的数量有可能比订单数量大，所以计算路费的时候要考虑到
         const cost = market.calcTransactionCost(Math.min(amount, targetOrder.amount), room.name, targetOrder.roomName)

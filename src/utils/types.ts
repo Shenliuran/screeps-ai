@@ -25,7 +25,7 @@ export interface EnvContext {
 /**
  * 所有包含 id 字段的游戏对象
  */
-export interface ObjectWithId<T = unknown> extends RoomObject {
+export interface ObjectWithId<T extends _HasId = _HasId > extends RoomObject {
     id: Id<T>
 }
 

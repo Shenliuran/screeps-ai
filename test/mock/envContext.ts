@@ -24,14 +24,15 @@ export const getTestEnvContext = function (opt: TestOptions = {}): { mockGame: G
 
     const mockFn = jest.fn(str => str)
 
-    const env = {
+    const env: EnvMethods = {
         getGame: () => mockGame,
         getRoomByName: roomName => mockGame.rooms[roomName],
         getCreepByName: creepName => mockGame.creeps[creepName],
-        getFlagByName: flagName => mockGame.flags[flagName],
+        getPowerCreepByName: creepName => mockGame.powerCreeps?.[creepName],
         getObjectById: id => mockGame.getObjectById(id),
+        getFlagByName: flagName => mockGame.flags[flagName],
         inInterval: interval => !!(mockGame.time % interval),
-        colorful: { green: mockFn, red: mockFn, yellow: mockFn, blue: mockFn },
+        colorful: { green: mockFn, red: mockFn, yellow: mockFn, blue: mockFn, bold: mockFn },
         log: { success: mockFn, warning: mockFn, error: mockFn, normal: mockFn }
     }
 

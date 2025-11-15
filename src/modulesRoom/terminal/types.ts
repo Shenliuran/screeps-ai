@@ -12,7 +12,7 @@ export interface TerminalMemory {
     /**
      * 房间内终端缓存的订单id
      */
-    orderId?: Id<Order>
+    orderId?: string
     /**
      * 当前终端要监听的资源索引
      */

@@ -25,7 +25,7 @@ export const createRoomShortcut = function () {
      * @param roomName 要查询的房间名
      * @param type 要查询的建筑类型
      */
-    const getCacheId = function (roomName: string, type: RoomShortcutKey): Id<RoomObject>[] {
+    const getCacheId = function (roomName: string, type: RoomShortcutKey): Id<RoomObject & _HasId>[] {
         if (!structureIdCache[roomName]) return undefined
         if (!structureIdCache[roomName][type]) return []
 
@@ -40,7 +40,7 @@ export const createRoomShortcut = function () {
      * @param type 要设置到的建筑类型
      * @param ids 要设置的 id
      */
-    const setCacheId = function (roomName: string, type: RoomShortcutKey, ids: Id<RoomObject>[]) {
+    const setCacheId = function (roomName: string, type: RoomShortcutKey, ids: Id<RoomObject & _HasId>[]) {
         if (!structureIdCache[roomName]) structureIdCache[roomName] = {}
         if (!structureIdCache[roomName][type]) structureIdCache[roomName][type] = []
 
@@ -58,7 +58,7 @@ export const createRoomShortcut = function () {
      * @param type 要追加到的建筑类型
      * @param id 新的建筑 id
      */
-    const updateStructure = function <T extends BuildableStructureConstant> (room: Room, type: T, id: Id<RoomObject>) {
+    const updateStructure = function <T extends BuildableStructureConstant> (room: Room, type: T, id: Id<RoomObject & _HasId>) {
         if (!structureIdCache[room.name]) structureIdCache[room.name] = {}
         if (!structureIdCache[room.name][type]) structureIdCache[room.name][type] = []
         structureIdCache[room.name][type].push(id)
@@ -122,7 +122,7 @@ export const createRoomShortcut = function () {
             const structure = Game.getObjectById(id)
             if (!structure) return false
 
-            target.push(structure as TargetStructure)
+            target.push(structure as unknown as TargetStructure)
             return true
         })
 

@@ -22,7 +22,7 @@ export const getMock = function<T> (MockClass: AnyClass): (props?: Partial<T>) =
  * 创建 Game.getObjectById
  * @param items 用于搜索的对象数组，每个对象都应包含 id
  */
-export const mockGetObjectById = function (items: ObjectWithId[]) {
-    Game.getObjectById = jest.fn((id: string) => items.find(item => item.id === id))
+export const mockGetObjectById = function (items: any[]) {
+    Game.getObjectById = jest.fn().mockImplementation((id: string) => items.find(item => item.id === id)) as any
     return Game.getObjectById
 }
