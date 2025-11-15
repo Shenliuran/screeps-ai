@@ -1,5 +1,5 @@
 {
-  "name": "my-screeps-ai",
+  "name": "screeps-ai",
   "version": "1.0.0",
   "description": "my custom ai for game Screeps",
   "main": "src/main.js",
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HoPGoldy/my-screeps-ai.git"
+    "url": "git+https://github.com/Shenliuran/screeps-ai.git"
   },
   "keywords": [
     "screeps"
   ],
-  "author": "hopgoldy",
+  "author": "liuranshen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HoPGoldy/my-screeps-ai/issues"
+    "url": "https://github.com/Shenliuran/screeps-ai/issues"
   },
-  "homepage": "https://github.com/HoPGoldy/my-screeps-ai#readme",
+  "homepage": "https://github.com/Shenliuran/screeps-ai#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
