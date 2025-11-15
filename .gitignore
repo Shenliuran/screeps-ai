@@ -21,3 +21,5 @@ server
 .screeps-multimeter.history
 .screeps.yaml
 multimeter.log
+
+package-lock.json
