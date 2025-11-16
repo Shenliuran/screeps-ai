@@ -9,6 +9,7 @@ import { RoomStats } from './types'
  */
 export const setRoomStats = function (roomName: string, getNewStats: (stats: RoomStats) => Partial<RoomStats>): void {
     if (!Memory.stats) Memory.stats = { rooms: {} }
+    if (!Memory.stats.rooms) Memory.stats.rooms = {}
 
     if (!Memory.stats.rooms[roomName]) {
         Memory.stats.rooms[roomName] = {
@@ -33,7 +34,9 @@ export const setRoomStats = function (roomName: string, getNewStats: (stats: Roo
  * @param roomName 要清理统计的房间名
  */
 export const clearRoomStats = function (roomName: string): void {
-    delete Memory.stats.rooms[roomName]
+    if (Memory.stats && Memory.stats.rooms) {
+        delete Memory.stats.rooms[roomName]
+    }
 }
 
 /**
@@ -42,6 +45,7 @@ export const clearRoomStats = function (roomName: string): void {
  * @param roomName 要获取统计的房间名
  */
 export const getRoomStats = function (roomName: string): RoomStats {
+    if (!Memory.stats || !Memory.stats.rooms) return {}
     return Memory.stats.rooms[roomName] || {}
 }
 
